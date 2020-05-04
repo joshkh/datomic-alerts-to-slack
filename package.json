@@ -1,0 +1,16 @@
+{
+  "name": "datomicalertstoslack",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "shadow-cljs": "2.8.109"
+  },
+  "dependencies": {
+    "zlib": "^1.0.5"
+  },
+  "scripts": {
+    "build": "shadow-cljs release :lambda --debug",
+    "predeploy": "npm run build",
+    "deploy": "yarn install && cd dist/lambda && zip -r lambda.zip index.js ../../node_modules/ && aws --profile default lambda update-function-code --function-name DatomicAlertsToSlack --zip-file fileb://lambda.zip"
+  }
+}

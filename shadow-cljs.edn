@@ -1,0 +1,5 @@
+{:lein   true
+ :builds {:lambda {:target           :node-library
+                   :output-to        "./dist/lambda/index.js"
+                   :exports          {:handler lambda.main/handler}
+                   :compiler-options {:infer-externs :auto}}}}
